@@ -23,14 +23,17 @@
 
     <!-- Configures the @Controller programming model
     <mvc:annotation-driven />-->
-    <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射
+    Spring5更新了calss,不注释会报错，新版本的springmvc已经不用手动添加了。删除该配置 直接可以使用、ajax注释掉即可。
+    废弃的org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+    最新使用org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter-->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
             <list>
                 <ref bean="mappingJacksonHttpMessageConverter"/>
             </list>
         </property>
-    </bean>
+    </bean>-->
 
     <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
