@@ -1,10 +1,9 @@
 package com.springmvc.dao;
 
-import com.springmvc.controller.UserConroller;
 import com.springmvc.entity.ScoreUsers;
 import org.apache.log4j.Logger;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -15,6 +14,10 @@ public class UserDaoImpl {
 
     @Autowired
     private ScoreUsersMapper mapper;
+
+    @Autowired
+    SqlSessionTemplate sqlSession;
+
     Logger logger = Logger.getLogger(UserDaoImpl.class);
 
     public void insert() {
@@ -44,6 +47,11 @@ public class UserDaoImpl {
      */
     public ScoreUsers selectByPrimaryKey(String username){
         return mapper.selectByPrimaryKey(username);
+    }
+
+
+    public ScoreUsers selectByPrimaryKey2(String username){
+        return sqlSession.selectOne("findUserInfo",username);
     }
 
 }

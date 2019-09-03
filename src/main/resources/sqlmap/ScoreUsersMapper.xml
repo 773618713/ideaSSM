@@ -161,4 +161,9 @@
       FILEPATH = #{filepath,jdbcType=CHAR}
     where USERNAME = #{username,jdbcType=CHAR}
   </update>
+
+  <select id="findUserInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from SCORE_USERS where USERNAME = #{username,jdbcType=CHAR}
+  </select>
+
 </mapper>
