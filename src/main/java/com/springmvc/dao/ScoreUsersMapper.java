@@ -16,4 +16,7 @@ public interface ScoreUsersMapper {
     int updateByPrimaryKeySelective(ScoreUsers record);
 
     int updateByPrimaryKey(ScoreUsers record);
+
+
+    ScoreUsers findUserInfo(String username);
 }

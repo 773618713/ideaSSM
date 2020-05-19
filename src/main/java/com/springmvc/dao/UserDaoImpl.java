@@ -51,7 +51,7 @@ public class UserDaoImpl {
 
 
     public ScoreUsers selectByPrimaryKey2(String username){
-        return sqlSession.selectOne("findUserInfo",username);
+        return sqlSession.selectOne("findUserInfo", username);
     }
 
 }
