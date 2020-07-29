@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.3.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd"  >
+
+    <!--这个配文件仅用于spring 前置、后置处理器的测试-->
+    <bean id="dog" class="com.springmvc.processor.Dog">
+        <property name="name" value="zhangsan"></property>
+    </bean>
+
+    <!--注冊 Bean 处理器-->
+    <bean class="com.springmvc.processor.MyBeanPostProcessor"></bean>
+
+</beans>
