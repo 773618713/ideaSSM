@@ -52,8 +52,6 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-
-
     <!-- 配置视图解析器，把控制器的逻辑视频映射为真正的视图 -->
     <!-- /WEB-INF/jsp/start.jsp -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -62,12 +60,9 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-
-
-
     <!-- 配置dbcp数据库连接池 -->
-
     <!-- <context:property-placeholder location="classpath:db.properties"/> -->
+
     <!--数据库配置 -->
     <bean id = "propertyConfigurer" class = "org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -75,7 +70,6 @@
                 <value>classpath:jdbc.properties</value>
             </list>
         </property>
-
     </bean>
 
     <!-- 数据库连接池 -->
@@ -91,13 +85,11 @@
     </bean>
 
     <!-- 配置会话工厂SqlSessionFactory -->
-
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.springmvc.entity" />
-
     </bean>
 
     <!-- mybatis spring sqlSessionTemplate,使用时直接让spring注入即可 -->

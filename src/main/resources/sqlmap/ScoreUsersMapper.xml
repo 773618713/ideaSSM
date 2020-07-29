@@ -1,169 +1,175 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.springmvc.dao.ScoreUsersMapper" >
-  <resultMap id="BaseResultMap" type="com.springmvc.entity.ScoreUsers" >
-    <id column="USERNAME" property="username" jdbcType="CHAR" />
-    <result column="USERCAPTION" property="usercaption" jdbcType="CHAR" />
-    <result column="SERVER_VER" property="serverVer" jdbcType="CHAR" />
-    <result column="USERTYPE" property="usertype" jdbcType="CHAR" />
-    <result column="LOGIN_DATE" property="loginDate" jdbcType="TIMESTAMP" />
-    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="OPEN" property="open" jdbcType="CHAR" />
-    <result column="USERPWD" property="userpwd" jdbcType="CHAR" />
-    <result column="ISCURRENT" property="iscurrent" jdbcType="CHAR" />
-    <result column="ACCOUNTCODE" property="accountcode" jdbcType="CHAR" />
-    <result column="FILEPATH" property="filepath" jdbcType="CHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    USERNAME, USERCAPTION, SERVER_VER, USERTYPE, LOGIN_DATE, CREATE_DATE, OPEN, USERPWD, 
-    ISCURRENT, ACCOUNTCODE, FILEPATH
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from SCORE_USERS
-    where USERNAME = #{username,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from SCORE_USERS
-    where USERNAME = #{username,jdbcType=CHAR}
-  </delete>
-  <insert id="insert" parameterType="com.springmvc.entity.ScoreUsers" >
-    insert into SCORE_USERS (USERNAME, USERCAPTION, SERVER_VER, 
-      USERTYPE, LOGIN_DATE, CREATE_DATE, 
-      OPEN, USERPWD, ISCURRENT, ACCOUNTCODE, 
-      FILEPATH)
-    values (#{username,jdbcType=CHAR}, #{usercaption,jdbcType=CHAR}, #{serverVer,jdbcType=CHAR}, 
-      #{usertype,jdbcType=CHAR}, #{loginDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{open,jdbcType=CHAR}, #{userpwd,jdbcType=CHAR}, #{iscurrent,jdbcType=CHAR}, #{accountcode,jdbcType=CHAR}, 
-      #{filepath,jdbcType=CHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.springmvc.entity.ScoreUsers" >
-    insert into SCORE_USERS
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        USERNAME,
-      </if>
-      <if test="usercaption != null" >
-        USERCAPTION,
-      </if>
-      <if test="serverVer != null" >
-        SERVER_VER,
-      </if>
-      <if test="usertype != null" >
-        USERTYPE,
-      </if>
-      <if test="loginDate != null" >
-        LOGIN_DATE,
-      </if>
-      <if test="createDate != null" >
-        CREATE_DATE,
-      </if>
-      <if test="open != null" >
-        OPEN,
-      </if>
-      <if test="userpwd != null" >
-        USERPWD,
-      </if>
-      <if test="iscurrent != null" >
-        ISCURRENT,
-      </if>
-      <if test="accountcode != null" >
-        ACCOUNTCODE,
-      </if>
-      <if test="filepath != null" >
-        FILEPATH,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        #{username,jdbcType=CHAR},
-      </if>
-      <if test="usercaption != null" >
-        #{usercaption,jdbcType=CHAR},
-      </if>
-      <if test="serverVer != null" >
-        #{serverVer,jdbcType=CHAR},
-      </if>
-      <if test="usertype != null" >
-        #{usertype,jdbcType=CHAR},
-      </if>
-      <if test="loginDate != null" >
-        #{loginDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="open != null" >
-        #{open,jdbcType=CHAR},
-      </if>
-      <if test="userpwd != null" >
-        #{userpwd,jdbcType=CHAR},
-      </if>
-      <if test="iscurrent != null" >
-        #{iscurrent,jdbcType=CHAR},
-      </if>
-      <if test="accountcode != null" >
-        #{accountcode,jdbcType=CHAR},
-      </if>
-      <if test="filepath != null" >
-        #{filepath,jdbcType=CHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.entity.ScoreUsers" >
-    update SCORE_USERS
-    <set >
-      <if test="usercaption != null" >
-        USERCAPTION = #{usercaption,jdbcType=CHAR},
-      </if>
-      <if test="serverVer != null" >
-        SERVER_VER = #{serverVer,jdbcType=CHAR},
-      </if>
-      <if test="usertype != null" >
-        USERTYPE = #{usertype,jdbcType=CHAR},
-      </if>
-      <if test="loginDate != null" >
-        LOGIN_DATE = #{loginDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createDate != null" >
-        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="open != null" >
-        OPEN = #{open,jdbcType=CHAR},
-      </if>
-      <if test="userpwd != null" >
-        USERPWD = #{userpwd,jdbcType=CHAR},
-      </if>
-      <if test="iscurrent != null" >
-        ISCURRENT = #{iscurrent,jdbcType=CHAR},
-      </if>
-      <if test="accountcode != null" >
-        ACCOUNTCODE = #{accountcode,jdbcType=CHAR},
-      </if>
-      <if test="filepath != null" >
-        FILEPATH = #{filepath,jdbcType=CHAR},
-      </if>
-    </set>
-    where USERNAME = #{username,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.springmvc.entity.ScoreUsers" >
-    update SCORE_USERS
-    set USERCAPTION = #{usercaption,jdbcType=CHAR},
-      SERVER_VER = #{serverVer,jdbcType=CHAR},
-      USERTYPE = #{usertype,jdbcType=CHAR},
-      LOGIN_DATE = #{loginDate,jdbcType=TIMESTAMP},
-      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
-      OPEN = #{open,jdbcType=CHAR},
-      USERPWD = #{userpwd,jdbcType=CHAR},
-      ISCURRENT = #{iscurrent,jdbcType=CHAR},
-      ACCOUNTCODE = #{accountcode,jdbcType=CHAR},
-      FILEPATH = #{filepath,jdbcType=CHAR}
-    where USERNAME = #{username,jdbcType=CHAR}
-  </update>
+<mapper namespace="com.springmvc.dao.ScoreUsersMapper">
+    <resultMap id="BaseResultMap" type="com.springmvc.entity.ScoreUsers">
+        <id column="USERNAME" property="username" jdbcType="CHAR"/>
+        <result column="USERCAPTION" property="usercaption" jdbcType="CHAR"/>
+        <result column="SERVER_VER" property="serverVer" jdbcType="CHAR"/>
+        <result column="USERTYPE" property="usertype" jdbcType="CHAR"/>
+        <result column="LOGIN_DATE" property="loginDate" jdbcType="TIMESTAMP"/>
+        <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="OPEN" property="open" jdbcType="CHAR"/>
+        <result column="USERPWD" property="userpwd" jdbcType="CHAR"/>
+        <result column="ISCURRENT" property="iscurrent" jdbcType="CHAR"/>
+        <result column="ACCOUNTCODE" property="accountcode" jdbcType="CHAR"/>
+        <result column="FILEPATH" property="filepath" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+USERNAME, USERCAPTION, SERVER_VER, USERTYPE, LOGIN_DATE, CREATE_DATE, OPEN, USERPWD,
+ISCURRENT, ACCOUNTCODE, FILEPATH
+</sql>
 
-  <select id="findUserInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
-    select * from SCORE_USERS where USERNAME = #{username,jdbcType=CHAR}
-  </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from SCORE_USERS
+        where USERNAME = #{username,jdbcType=CHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+delete from SCORE_USERS
+where USERNAME = #{username,jdbcType=CHAR}
+</delete>
+
+    <insert id="insert" parameterType="com.springmvc.entity.ScoreUsers">
+insert into SCORE_USERS (USERNAME, USERCAPTION, SERVER_VER,
+USERTYPE, LOGIN_DATE, CREATE_DATE,
+OPEN, USERPWD, ISCURRENT, ACCOUNTCODE,
+FILEPATH)
+values (#{username,jdbcType=CHAR}, #{usercaption,jdbcType=CHAR}, #{serverVer,jdbcType=CHAR},
+#{usertype,jdbcType=CHAR}, #{loginDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP},
+#{open,jdbcType=CHAR}, #{userpwd,jdbcType=CHAR}, #{iscurrent,jdbcType=CHAR}, #{accountcode,jdbcType=CHAR},
+#{filepath,jdbcType=CHAR})
+</insert>
+
+    <insert id="insertSelective" parameterType="com.springmvc.entity.ScoreUsers">
+        insert into SCORE_USERS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                USERNAME,
+            </if>
+            <if test="usercaption != null">
+                USERCAPTION,
+            </if>
+            <if test="serverVer != null">
+                SERVER_VER,
+            </if>
+            <if test="usertype != null">
+                USERTYPE,
+            </if>
+            <if test="loginDate != null">
+                LOGIN_DATE,
+            </if>
+            <if test="createDate != null">
+                CREATE_DATE,
+            </if>
+            <if test="open != null">
+                OPEN,
+            </if>
+            <if test="userpwd != null">
+                USERPWD,
+            </if>
+            <if test="iscurrent != null">
+                ISCURRENT,
+            </if>
+            <if test="accountcode != null">
+                ACCOUNTCODE,
+            </if>
+            <if test="filepath != null">
+                FILEPATH,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=CHAR},
+            </if>
+            <if test="usercaption != null">
+                #{usercaption,jdbcType=CHAR},
+            </if>
+            <if test="serverVer != null">
+                #{serverVer,jdbcType=CHAR},
+            </if>
+            <if test="usertype != null">
+                #{usertype,jdbcType=CHAR},
+            </if>
+            <if test="loginDate != null">
+                #{loginDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="open != null">
+                #{open,jdbcType=CHAR},
+            </if>
+            <if test="userpwd != null">
+                #{userpwd,jdbcType=CHAR},
+            </if>
+            <if test="iscurrent != null">
+                #{iscurrent,jdbcType=CHAR},
+            </if>
+            <if test="accountcode != null">
+                #{accountcode,jdbcType=CHAR},
+            </if>
+            <if test="filepath != null">
+                #{filepath,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.entity.ScoreUsers">
+        update SCORE_USERS
+        <set>
+            <if test="usercaption != null">
+                USERCAPTION = #{usercaption,jdbcType=CHAR},
+            </if>
+            <if test="serverVer != null">
+                SERVER_VER = #{serverVer,jdbcType=CHAR},
+            </if>
+            <if test="usertype != null">
+                USERTYPE = #{usertype,jdbcType=CHAR},
+            </if>
+            <if test="loginDate != null">
+                LOGIN_DATE = #{loginDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createDate != null">
+                CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="open != null">
+                OPEN = #{open,jdbcType=CHAR},
+            </if>
+            <if test="userpwd != null">
+                USERPWD = #{userpwd,jdbcType=CHAR},
+            </if>
+            <if test="iscurrent != null">
+                ISCURRENT = #{iscurrent,jdbcType=CHAR},
+            </if>
+            <if test="accountcode != null">
+                ACCOUNTCODE = #{accountcode,jdbcType=CHAR},
+            </if>
+            <if test="filepath != null">
+                FILEPATH = #{filepath,jdbcType=CHAR},
+            </if>
+        </set>
+        where USERNAME = #{username,jdbcType=CHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.springmvc.entity.ScoreUsers">
+update SCORE_USERS
+set USERCAPTION = #{usercaption,jdbcType=CHAR},
+SERVER_VER = #{serverVer,jdbcType=CHAR},
+USERTYPE = #{usertype,jdbcType=CHAR},
+LOGIN_DATE = #{loginDate,jdbcType=TIMESTAMP},
+CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+OPEN = #{open,jdbcType=CHAR},
+USERPWD = #{userpwd,jdbcType=CHAR},
+ISCURRENT = #{iscurrent,jdbcType=CHAR},
+ACCOUNTCODE = #{accountcode,jdbcType=CHAR},
+FILEPATH = #{filepath,jdbcType=CHAR}
+where USERNAME = #{username,jdbcType=CHAR}
+</update>
+
+    <select id="findUserInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
+select * from SCORE_USERS where USERNAME = #{username,jdbcType=CHAR}
+</select>
 
 </mapper>

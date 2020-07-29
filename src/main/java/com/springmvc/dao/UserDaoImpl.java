@@ -6,52 +6,23 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
-import java.util.UUID;
-
+/**
+ * dao层
+ */
 @Repository
-public class UserDaoImpl {
-
-    @Autowired
-    private ScoreUsersMapper mapper;
+public class UserDaoImpl implements UserDao{
+    Logger logger = Logger.getLogger(UserDaoImpl.class);
 
     @Autowired
     SqlSessionTemplate sqlSession;
 
-    Logger logger = Logger.getLogger(UserDaoImpl.class);
-
-    public void insert() {
-        ScoreUsers scoreUser = new ScoreUsers();
-        scoreUser.setUsername(UUID.randomUUID().toString());
-        scoreUser.setUsercaption("1");
-        scoreUser.setServerVer("1");
-        scoreUser.setUsertype("1");
-        scoreUser.setLoginDate(new Date());
-        scoreUser.setCreateDate(new Date());
-        scoreUser.setOpen("1");
-        scoreUser.setUserpwd("1");
-        scoreUser.setIscurrent("1");
-        scoreUser.setAccountcode("1");
-        scoreUser.setFilepath("1");
-
-        int result = mapper.insert(scoreUser);
-        logger.info(scoreUser);
-        logger.info("123456");
-        assert (result == 1);
-    }
-
     /**
      * 查询
-     * @param username
+     * 通过设置sqlId来查询数据
      * @return
      */
-    public ScoreUsers selectByPrimaryKey(String username){
-        return mapper.selectByPrimaryKey(username);
-    }
-
-
-    public ScoreUsers selectByPrimaryKey2(String username){
+    @Override
+    public ScoreUsers getUserInfoBySqlId(String username) {
         return sqlSession.selectOne("findUserInfo", username);
     }
-
 }
